@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Joriel Justiniano E portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+  --paper:#F1F4F8;--sheet:#FFFFFF;--ink:#1B2540;--soft:#566180;--line:#D5DCE8;--dot:#CFD7E4;
+  --red:#DD5560;--hl:#FFE46B;--hlsoft:rgba(255,228,107,.28);--pen:#2447B5;
+  --teal:#1E4452;--teal2:#2F6B7C;--tape:rgba(255,214,102,.7);--shadow:rgba(27,37,64,.18);
+  --sun:#E0A100;--cloud:#6C7BA6;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --paper:#10162A;--sheet:#192140;--ink:#E7ECF7;--soft:#9EA9C6;--line:#2A3459;--dot:#222B4C;
+    --red:#F07A84;--hl:#E8C547;--hlsoft:rgba(232,197,71,.16);--pen:#8DB1FF;
+    --teal:#0F2A33;--teal2:#6FB3C4;--tape:rgba(232,197,71,.35);--shadow:rgba(0,0,0,.55);
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#10162A;--sheet:#192140;--ink:#E7ECF7;--soft:#9EA9C6;--line:#2A3459;--dot:#222B4C;
+  --red:#F07A84;--hl:#E8C547;--hlsoft:rgba(232,197,71,.16);--pen:#8DB1FF;
+  --teal:#0F2A33;--teal2:#6FB3C4;--tape:rgba(232,197,71,.35);--shadow:rgba(0,0,0,.55);
+}
+*{box-sizing:border-box}
+html{scroll-padding-top:calc(76px + env(safe-area-inset-top,0px));height:100%}
+body{margin:0;min-height:100%;background:var(--paper);background-image:radial-gradient(var(--dot) 1.1px,transparent 1.3px);background-size:24px 24px;color:var(--ink);font:17px/1.65 'Source Serif 4',Georgia,serif;-webkit-text-size-adjust:100%}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--pen);outline-offset:2px}
+.ico{display:block;flex:none}
+.hand{font-family:'Caveat','Segoe Script',cursive;color:var(--pen);font-weight:500;line-height:1.25}
+
+/* cover */
+.cover{position:fixed;inset:0;z-index:20;background:var(--teal);color:#F4F7F9;display:grid;place-items:center;padding:calc(24px + env(safe-area-inset-top,0px)) 22px calc(24px + env(safe-area-inset-bottom,0px));transition:transform .8s cubic-bezier(.7,0,.25,1)}
+.cover.gone{transform:translateY(-104%)}
+.book{width:min(430px,100%);border-left:16px solid rgba(0,0,0,.28);padding:6px 0 6px 20px}
+.cover h1{font-size:clamp(2.4rem,11vw,3.4rem);line-height:1.02;margin:0 0 12px;font-weight:700;letter-spacing:-.01em}
+.cover .lab{display:inline-block;background:#fff;color:#1B2540;padding:6px 16px 8px;transform:rotate(-2.5deg);margin:6px 0 22px;box-shadow:0 4px 0 rgba(0,0,0,.2)}
+.cover .lab .hand{color:#2447B5;font-size:1.5rem}
+.cover p{margin:0 0 22px;max-width:30ch;color:#C9D8DE}
+.cgo{display:flex;gap:14px;margin-bottom:26px;flex-wrap:wrap}
+.cgo button{width:62px;height:62px;display:grid;place-items:center;background:#F4F7F9;color:#1E4452;border:0;border-radius:10px 16px 12px 18px;cursor:pointer;box-shadow:3px 3px 0 rgba(0,0,0,.3);transition:transform .15s}
+.cgo button:nth-child(odd){transform:rotate(-3deg)}
+.cgo button:nth-child(even){transform:rotate(2.5deg)}
+.cgo button:hover{transform:rotate(0) translateY(-3px)}
+.open{background:var(--hl);color:#1B2540;border:0;border-radius:999px;padding:12px 24px;font-weight:700;cursor:pointer;box-shadow:0 4px 0 rgba(0,0,0,.28)}
+.open:active{transform:translateY(3px);box-shadow:0 1px 0 rgba(0,0,0,.28)}
+
+/* header */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:color-mix(in srgb,var(--paper) 93%,transparent);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.tabs{display:flex;gap:2px;overflow-x:auto;padding:6px 10px 0;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tab{flex:none;display:flex;align-items:center;gap:7px;padding:8px 11px 10px;border:0;background:none;color:var(--soft);font-size:.9rem;cursor:pointer;border-bottom:3px solid transparent;white-space:nowrap}
+.tab[aria-current="true"]{color:var(--ink);font-weight:600;border-bottom-color:var(--red)}
+.cnt{font-size:.74rem;color:var(--soft);font-weight:400}
+.bar{height:3px;background:var(--line)}
+.bar i{display:block;height:100%;width:0;background:var(--pen);transition:width .45s}
+
+main{max-width:780px;margin:0 auto;padding:22px 16px 40px}
+h1,h2,h3{line-height:1.15;margin:0}
+h2{font-size:1.3rem;margin:34px 0 4px}
+.sub{margin:0 0 6px;color:var(--soft);font-size:.95rem}
+
+/* chapter head */
+.chhead{display:flex;gap:22px;align-items:center;flex-wrap:wrap;margin-bottom:6px}
+.polaroid{position:relative;width:128px;background:var(--sheet);padding:9px 9px 4px;box-shadow:0 8px 18px -8px var(--shadow);transform:rotate(-3.5deg);text-align:center;flex:none}
+.polaroid::before{content:"";position:absolute;top:-9px;left:50%;width:44px;height:15px;background:var(--tape);transform:translateX(-50%) rotate(3deg)}
+.polaroid .pic{display:grid;place-items:center;height:104px;background:var(--hlsoft);color:var(--teal2)}
+.polaroid .hand{font-size:1.15rem;display:block;padding-top:2px}
+.chhead h1{font-size:clamp(1.8rem,7vw,2.5rem);font-weight:700;letter-spacing:-.01em}
+.chhead .lead{font-size:1.65rem;margin:8px 0 4px}
+.src{margin:0;font-size:.85rem;font-style:italic;color:var(--soft)}
+.chtxt{flex:1;min-width:210px}
+
+/* stickers */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(92px,1fr));gap:22px 8px;margin:20px 0 18px}
+.stk{background:none;border:0;padding:0;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:9px;text-align:center}
+.tile{position:relative;width:68px;height:68px;display:grid;place-items:center;background:var(--sheet);border:2px solid var(--ink);border-radius:10px 16px 12px 18px;color:var(--teal2);box-shadow:3px 3px 0 var(--ink);transition:transform .14s,box-shadow .14s,background .14s}
+.tile::before{content:"";position:absolute;top:-9px;left:50%;width:28px;height:12px;background:var(--tape);transform:translateX(-50%) rotate(-4deg)}
+.stk:nth-child(3n+2) .tile{transform:rotate(1.8deg);border-radius:16px 10px 18px 12px}
+.stk:nth-child(3n+3) .tile{transform:rotate(-1.4deg)}
+.stk:hover .tile{transform:translateY(-3px) rotate(0)}
+.stk.on .tile{background:var(--hl);color:#1B2540;transform:translate(2px,2px) rotate(0);box-shadow:1px 1px 0 var(--ink)}
+.lbl{font-size:.82rem;line-height:1.25;max-width:98px}
+.stk.on .lbl{font-weight:600}
+.chk{position:absolute;right:-8px;bottom:-8px;width:22px;height:22px;border-radius:50%;background:var(--pen);color:#fff;display:none;place-items:center;border:2px solid var(--paper)}
+.stk.read .chk{display:grid}
+[data-theme="dark"] .chk{color:#10162A}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .chk{color:#10162A}}
+
+/* pages */
+.sheet{position:relative;background:var(--sheet);border:1px solid var(--line);border-radius:4px;padding:18px 18px 18px 26px;box-shadow:0 10px 22px -14px var(--shadow)}
+.sheet::before{content:"";position:absolute;left:12px;top:0;bottom:0;width:2px;background:var(--red);opacity:.55}
+.entry{animation:in .22s ease-out;scroll-margin-top:calc(76px + env(safe-area-inset-top,0px))}
+@keyframes in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.entry h3{font-size:1.4rem;margin-bottom:8px}
+.entry p{margin:0 0 10px}
+.ex{font-style:italic;color:var(--soft)}
+.ex b{font-style:normal;font-weight:600;color:var(--ink)}
+.mine{display:flex;gap:8px;align-items:flex-start;margin-top:14px}
+.pen{flex:none;margin-top:6px;width:34px;height:34px;display:grid;place-items:center;background:none;border:1.5px solid var(--pen);color:var(--pen);border-radius:50%;cursor:pointer}
+.refl{margin:0!important;flex:1;font-size:1.5rem;padding:6px 12px;background:var(--hlsoft);border-left:3px solid var(--hl);border-radius:0 8px 8px 0;outline:none}
+.refl:focus{box-shadow:0 0 0 2px var(--pen)}
+.hint{font-size:1.4rem;margin:6px 0;color:var(--soft)}
+.editnote{font-size:.78rem;color:var(--soft);margin:6px 0 0 42px;font-style:italic}
+
+/* widgets */
+.verdict{border:2px dashed var(--teal2);border-radius:12px;padding:12px 14px;margin-top:14px}
+.verdict p{margin:0}
+.badge{display:inline-block;padding:1px 12px 3px;border-radius:999px;font-weight:700;font-size:.85rem;margin-bottom:6px;color:#fff}
+.badge.yes{background:#1F7A5A}.badge.mid{background:#B27A00}.badge.no{background:#B8404C}
+.mixrow{display:flex;align-items:center;gap:12px;margin:16px 0 8px}
+.mixrow .ico{color:var(--teal2)}
+input[type=range]{flex:1;accent-color:var(--pen);height:34px}
+.steps{display:flex;justify-content:space-between;position:relative;margin:18px 0 14px}
+.steps::before{content:"";position:absolute;left:18px;right:18px;top:17px;height:2px;background:var(--line)}
+.sn{position:relative;width:36px;height:36px;border-radius:50%;border:2px solid var(--ink);background:var(--sheet);font-weight:700;cursor:pointer;display:grid;place-items:center}
+.sn.done{border-color:var(--pen);color:var(--pen)}
+.sn.on{background:var(--pen);border-color:var(--pen);color:#fff}
+[data-theme="dark"] .sn.on{color:#10162A}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .sn.on{color:#10162A}}
+.stepnav{display:flex;justify-content:space-between;margin-top:8px}
+.btn{background:var(--sheet);border:2px solid var(--ink);border-radius:999px;padding:6px 16px;cursor:pointer;font-weight:600}
+.btn[disabled]{opacity:.35;cursor:default}
+.juan{display:flex;gap:14px;align-items:center;margin:16px 0 0;padding:14px 16px;background:var(--hlsoft);border:2px solid var(--ink);border-radius:14px 6px 14px 6px}
+.juan .ico{color:var(--sun);width:54px;height:54px}
+.juan p{margin:0}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+.chip{display:flex;align-items:center;gap:8px;border:2px solid var(--ink);background:var(--sheet);padding:5px 14px 5px 9px;border-radius:999px;cursor:pointer;font-size:.92rem}
+.chip .ico{color:var(--teal2)}
+.chip[aria-pressed="true"]{background:var(--hl);color:#1B2540}
+.chip[aria-pressed="true"] .ico{color:#1B2540}
+.seg{display:flex;border:2px solid var(--ink);border-radius:999px;overflow:hidden;width:max-content;max-width:100%;margin:16px 0}
+.seg button{display:flex;align-items:center;gap:8px;border:0;background:var(--sheet);padding:8px 20px;cursor:pointer;font-weight:600}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.tt{padding:16px;border-radius:14px;transition:background .4s}
+.tt.thick{background:linear-gradient(180deg,rgba(255,214,102,.38),transparent 80%);--c:var(--sun)}
+.tt.thin{background:linear-gradient(180deg,rgba(108,123,166,.32),transparent 80%);--c:var(--cloud)}
+.tt .big{color:var(--c);margin-bottom:6px}
+.tt h3{font-size:1.3rem;margin-bottom:6px}
+.tt p{margin:8px 0}
+.tt .chips{margin:10px 0}
+.tt .chips span{border:1.5px solid var(--c);border-radius:999px;padding:2px 12px;font-size:.88rem;background:var(--sheet)}
+.steady{display:flex;align-items:center;gap:10px;margin:6px 0 0;font-size:.9rem}
+.steady i{flex:1;min-width:30px;height:4px;border-radius:2px;background:var(--pen)}
+.steady small{color:var(--soft);flex-basis:100%;font-size:.8rem}
+.opt{display:flex;gap:12px;width:100%;text-align:left;border:2px solid var(--ink);background:var(--sheet);padding:10px 14px;margin:9px 0;border-radius:14px 6px 14px 6px;cursor:pointer}
+.opt b{flex:none}
+.opt.chosen{background:var(--hl);color:#1B2540}
+.fb{margin:2px 0 10px 8px;padding-left:12px;border-left:3px solid var(--teal2)}
+.fb p{margin:0 0 6px}
+textarea{width:100%;min-height:110px;resize:vertical;font-family:'Caveat',cursive;font-size:1.5rem;line-height:1.3;color:var(--pen);background:var(--hlsoft);border:0;border-left:3px solid var(--hl);border-radius:0 8px 8px 0;padding:10px 12px}
+.take{margin:0;padding:0;list-style:none}
+.take li{display:flex;gap:12px;align-items:flex-start;padding:10px 0;border-bottom:1px solid var(--line)}
+.take li:last-child{border:0}
+.take .ico{color:var(--teal2);margin-top:3px}
+.take .hand{font-size:1.5rem}
+.final{font-size:1.9rem;margin:22px 0 4px;text-align:center}
+.foot{text-align:center;color:var(--soft);font-size:.82rem;padding:0 16px calc(40px + env(safe-area-inset-bottom,0px))}
+.foot button{background:none;border:0;color:var(--soft);text-decoration:underline;cursor:pointer;font-size:inherit}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<div class="cover" id="cover">
+  <div class="book">
+    <h1>My Ethics Journal</h1>
+    <div class="lab"><span class="hand">notes &amp; reflections</span></div>
+    <p>Four lessons, in my own words. Tap an icon to jump to a chapter.</p>
+    <div class="cgo" id="cgo"></div>
+    <button class="open" id="openBtn">Open my journal</button>
+  </div>
+</div>
+
+<header class="top">
+  <nav class="tabs" id="tabs" role="tablist" aria-label="Chapters"></nav>
+  <div class="bar" aria-hidden="true"><i id="barfill"></i></div>
+</header>
+<main id="page"></main>
+<div class="foot">Your edits and progress are saved on this device. <button id="reset">Reset my journal</button></div>
+
+<script>
+/* ---------- helpers ---------- */
+const $ = s => document.querySelector(s);
+const esc = s => String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+const store = {
+  get(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } },
+  set(k,v){ try{ localStorage.setItem(k,v); }catch(e){} },
+  clear(){ try{ Object.keys(localStorage).filter(k=>k.startsWith('ej_')).forEach(k=>localStorage.removeItem(k)); }catch(e){} }
+};
+let read = new Set();
+try{ read = new Set(JSON.parse(store.get('ej_read')||'[]')); }catch(e){}
+
+const P = {
+ person:'<circle cx="24" cy="15" r="7"/><path d="M9 42c0-9 6-15 15-15s15 6 15 15"/>',
+ fear:'<circle cx="21" cy="17" r="7"/><path d="M7 42c0-9 6-15 14-15s14 6 14 15"/><path d="M38 7c2 3 3 4.5 3 6a3 3 0 0 1-6 0c0-1.5 1-3 3-6z"/>',
+ fade:'<circle cx="24" cy="15" r="7" stroke-dasharray="3 4"/><path d="M9 42c0-9 6-15 15-15s15 6 15 15" stroke-dasharray="3 4"/>',
+ paw:'<ellipse cx="24" cy="32" rx="9" ry="7"/><circle cx="11" cy="23" r="3.5"/><circle cx="19" cy="14" r="3.5"/><circle cx="29" cy="14" r="3.5"/><circle cx="37" cy="23" r="3.5"/>',
+ robot:'<rect x="10" y="17" width="28" height="22" rx="5"/><circle cx="19" cy="27" r="2.5"/><circle cx="29" cy="27" r="2.5"/><path d="M19 34h10M24 17V9"/><circle cx="24" cy="7" r="2"/>',
+ heart:'<path d="M24 41C10 31 7 21 12 15c4-4 10-3 12 2 2-5 8-6 12-2 5 6 2 16-12 26z"/>',
+ bulb:'<path d="M24 6a12 12 0 0 0-6.500 22V34h13v-6A12 12 0 0 0 24 6z"/><path d="M19 40h10"/>',
+ scale:'<path d="M24 8v32M14 40h20M8 14h32"/><path d="M8 14l-5 13a5 5 0 0 0 10 0z"/><path d="M40 14l-5 13a5 5 0 0 0 10 0z"/>',
+ compass:'<circle cx="24" cy="24" r="17"/><path d="M31 17l-5 10-10 5 5-10z"/>',
+ plant:'<path d="M24 42V24M15 42h18"/><path d="M24 29c-9 0-13-5-13-12 9 0 13 5 13 12z"/><path d="M24 24c0-7 4-12 13-12 0 7-4 12-13 12z"/>',
+ safe:'<rect x="10" y="20" width="28" height="20" rx="3"/><path d="M16 20v-5a8 8 0 0 1 16 0v5"/><circle cx="24" cy="30" r="3"/>',
+ pie:'<circle cx="24" cy="24" r="17"/><path d="M24 24V7M24 24l15 8.500M24 24l-15 8.500"/>',
+ coins:'<ellipse cx="24" cy="13" rx="11" ry="5"/><path d="M13 13v8c0 3 5 5 11 5s11-2 11-5v-8M13 21v8c0 3 5 5 11 5s11-2 11-5v-8M13 29v6c0 3 5 5 11 5s11-2 11-5v-6"/>',
+ ladder:'<path d="M14 42L19 6M34 42L29 6M16 32h16M17.500 22h13M19 12h10"/>',
+ shield:'<path d="M24 6l15 6v11c0 10-7 16-15 19-8-3-15-9-15-19V12z"/><path d="M17 24l5 5 9-10"/>',
+ sun:'<circle cx="24" cy="24" r="8"/><path d="M24 5v6M24 37v6M5 24h6M37 24h6M10.500 10.500l4 4M33.500 33.500l4 4M37.500 10.500l-4 4M14.500 33.500l-4 4"/>',
+ cloud:'<path d="M14 30a8 8 0 0 1 2-15 10 10 0 0 1 19 3 6 6 0 0 1-1 12z"/><path d="M17 36l-2 5M25 36l-2 5M33 36l-2 5"/>',
+ book:'<path d="M24 14c-4-3-10-4-16-4v28c6 0 12 1 16 4 4-3 10-4 16-4V10c-6 0-12 1-16 4z"/><path d="M24 14v28"/>',
+ law:'<path d="M6 18L24 7l18 11zM10 21v15M19 21v15M29 21v15M38 21v15M6 41h36"/>',
+ people:'<circle cx="15" cy="16" r="5"/><circle cx="33" cy="16" r="5"/><path d="M5 38c0-7 4-11 10-11s10 4 10 11M23 38c0-7 4-11 10-11s10 4 10 11"/>',
+ target:'<circle cx="24" cy="24" r="17"/><circle cx="24" cy="24" r="10"/><circle cx="24" cy="24" r="3"/>',
+ signpost:'<path d="M24 6v36M24 12h14l4 4-4 4H24M24 26H10l-4 4 4 4h14"/>',
+ globe:'<circle cx="24" cy="24" r="17"/><ellipse cx="24" cy="24" rx="7" ry="17"/><path d="M7 24h34"/>',
+ loop:'<path d="M38 24a14 14 0 1 1-4-10M34 6v8h-8"/>',
+ bolt:'<path d="M27 5L12 27h11l-3 16 16-23H25z"/>',
+ bars:'<path d="M10 40V26M20 40V14M30 40V22M40 40V8M6 40h38"/>',
+ plusminus:'<path d="M24 8v14M17 15h14M17 36h14"/>',
+ phone:'<rect x="14" y="6" width="20" height="36" rx="4"/><circle cx="24" cy="36" r="1.500"/>',
+ key:'<circle cx="16" cy="24" r="7"/><path d="M23 24h20M36 24v7M42 24v5"/>',
+ list:'<rect x="12" y="7" width="24" height="35" rx="3"/><path d="M18 17h12M18 25h12M18 33h7"/>',
+ hourglass:'<path d="M13 6h22M13 42h22M15 6c0 10 9 12 9 18s-9 8-9 18M33 6c0 10-9 12-9 18s9 8 9 18"/>',
+ crown:'<path d="M8 36l-2-20 10 9 8-14 8 14 10-9-2 20z"/><path d="M8 41h32"/>',
+ mountain:'<path d="M4 40l14-24 8 12 6-8 12 20z"/>',
+ question:'<circle cx="24" cy="24" r="17"/><path d="M18.500 19a5.500 5.500 0 1 1 7.500 5c-2 1-2 2.500-2 4M24 34v.5"/>',
+ pencil:'<path d="M8 40l3-10L32 9l7 7L18 37z"/><path d="M28 13l7 7"/>',
+ check:'<path d="M12 25l8 8 16-17" stroke-width="5"/>'
+};
+const ico = (n,s=32) => `<svg class="ico" viewBox="0 0 48 48" width="${s}" height="${s}" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${P[n]}</svg>`;
+
+/* ---------- content ---------- */
+const C1 = [
+ {id:'c1-agent',icon:'person',name:'Moral agent',
+  u:'“Moral” comes from the Latin mores, a society’s standards of conduct. “Agent” comes from agere, to act. A moral agent is someone whose actions can be judged as right or wrong.',
+  ex:'If I copy a classmate’s work, people can say that was wrong. Nobody says that about a storm.',
+  r:'If my actions can be judged, then they are really mine.'},
+ {id:'c1-minimal',icon:'fear',name:'Minimal view',
+  u:'Haksar: it is enough to be able to follow morality’s basic outside rules, even if the only reason is fear of punishment.',
+  ex:'Not cutting the line only because the guard is watching.',
+  r:'It counts as following a rule, but it feels thin. I want my reasons to be mine.'},
+ {id:'c1-kant',icon:'safe',name:'Kantian view',
+  u:'A true moral agent rises above feelings and impulses and acts for the sake of the moral law itself, not for self-interest.',
+  ex:'Returning a lost wallet when no one would ever know.',
+  r:'The real test is whether I would still do it when nobody benefits.'},
+ {id:'c1-capacity',icon:'fade',name:'Loss of capacity',
+  u:'Moral agency depends on being able to act knowingly, freely and voluntarily. A dog or a robot has no mind or free will in that sense, and someone who loses the capacity (like with insanity) leaves moral agency.',
+  ex:'A dog that grabs food from a table is not “being immoral.”',
+  r:'Responsibility needs knowing and freedom. When either is missing, blame gets complicated.'},
+ {id:'c1-purpose',icon:'target',name:'Purpose-driven agent',
+  u:'Aquinas and Panizo: every agent acts for an end, and moves toward whatever is suitable or good for it. Moral agents are purpose-driven, aiming at an ultimate end.',
+  ex:'A nursing student is not just studying. She is heading toward caring for patients.',
+  r:'Before asking “what should I do?”, I should ask “what am I aiming at?”'},
+ {id:'c1-sartre',icon:'signpost',name:'Making myself',
+  u:'Existentialism (Sartre): a person has no fixed essence until he begins to exist by choosing. Following what everyone else thinks, says and does leads to an empty life. Process philosophy adds that I become who I am through an ongoing creative process.',
+  ex:'Picking a course only because my friends picked it.',
+  r:'Following the crowd is still a choice. I just did not think about it.'},
+ {id:'c1-others',icon:'people',name:'Being with others',
+  u:'Heidegger, Marcel and Buber: a person is inseparably “being-with-others.” Setting aside bias, I see the other as a fellow subject. Buber called it a “life of dialogue.” Purpose comes through relationship, not isolation.',
+  ex:'Really listening to a classmate I disagree with.',
+  r:'I do not find my purpose alone. The people around me help shape it.'},
+ {id:'c1-world',icon:'globe',name:'World to come',
+  u:'Fr. Brabander: the “world to come” grows out of this world, so you cannot love one and despise the other. The modern saint fights for justice, builds schools and hospitals, clothes the naked and feeds the hungry. Buber: hallow this world and you meet the living God.',
+  ex:'A barangay feeding program as a small piece of the world to come.',
+  r:'Faith becomes real when I do something for someone right now.'},
+ {id:'c1-option',icon:'compass',name:'Basic stance',
+  u:'Janssens and Fr. Fernandez: a person takes a basic stance toward the Absolute Value (God). It is a foundational judgment of conscience, and it shapes all later choices. It has to be formed sincerely and refined continually.',
+  ex:'Someone whose basic stance is honesty finds the small choices easier.',
+  r:'My small choices flow from one deeper direction. I should check it often.'}
+];
+const AGENTS = [
+ {id:'a1',icon:'person',name:'A person choosing freely',v:'Yes',cls:'yes',t:'They act knowingly, freely and voluntarily, so the act can be judged right or wrong.'},
+ {id:'a2',icon:'fear',name:'Obeying only from fear',v:'Yes, minimally',cls:'mid',t:'On Haksar’s minimal view, following the basic rule is enough, even if the motive is fear of punishment. Kant would ask for more: acting for the moral law itself.'},
+ {id:'a3',icon:'paw',name:'A dog',v:'No',cls:'no',t:'It cannot act knowingly and freely. It has no mind or free will in the moral sense, so there is no right or wrong to judge.'},
+ {id:'a4',icon:'robot',name:'A robot',v:'No',cls:'no',t:'Same reasoning as the dog: no free will of its own.'},
+ {id:'a5',icon:'fade',name:'Someone who lost the capacity',v:'No longer',cls:'no',t:'Moral agency rests on the capacity to act for moral reasons. Lose it, as with insanity, and the person steps out of moral agency.'}
+];
+
+const C2 = [
+ {id:'c2-gut',icon:'bolt',name:'Gut feelings',
+  u:'Moral decisions often begin with an instant feeling: empathy, disgust, anger, guilt. Haidt argues that reasoning usually shows up afterward to justify the feeling.',
+  ex:'I see a student being bullied and feel concern before I think anything.',
+  r:'My gut speaks first. I will treat it as an alarm, not a verdict.'},
+ {id:'c2-trained',icon:'book',name:'Instinctive vs. trained',
+  u:'Instinctive feelings appear naturally: sympathy for someone hurt, guilt after doing wrong, anger at unfairness. Trained feelings are built through family, teachers and experience, like controlling anger or respecting people I disagree with.',
+  ex:'I get a lower grade and feel angry, but I remember to calmly ask how I can improve.',
+  r:'I cannot always control the first feeling, but I can train the second one.'},
+ {id:'c2-dual',icon:'hourglass',name:'Two systems',
+  u:'Joshua Greene: System 1 is fast, emotional and automatic. System 2 is slow and deliberate, weighing costs and benefits.',
+  ex:'Pulling a child away from danger is System 1. Deciding how to split a group grade is System 2.',
+  r:'Fast is good for emergencies, slow is good for big decisions. Knowing which one I am using helps.'},
+ {id:'c2-limits',icon:'plusminus',name:'Strengths and limits',
+  u:'Feelings give quick judgments, keep ethics human, and give me the push to act. But they are volatile and biased. I feel more for people like me (in-group bias), more for one named victim than for millions (the identifiable victim effect), and I can burn out or be manipulated.',
+  ex:'Outrage marketing that makes me angry before I have checked the facts.',
+  r:'I help the person I can see more easily. Fairness means remembering the ones I cannot see.'},
+ {id:'c2-thinkers',icon:'people',name:'Hume, Kant, Aristotle',
+  u:'Hume: reason is the slave of the passions, so feelings drive morality. Kant: emotions make us reactive, so true morality means acting from duty. Aristotle: emotions can be trained. A virtuous person feels the right emotion toward the right object, to the right degree, at the right time.',
+  ex:'Feeling angry at an injustice, but only as angry as the situation really deserves.',
+  r:'Aristotle feels most useful. Do not delete the feeling, train it.'},
+ {id:'c2-reason',icon:'bulb',name:'Reason and impartiality',
+  u:'Reason is thinking logically from facts and evidence. Impartiality is being fair and unbiased, not favoring someone because of how I feel about them. These are the minimum for morality.',
+  ex:'A teacher grades a friend’s exam only by the answers. Two students argue and I hear both sides first.',
+  r:'Being fair to a friend sometimes means not favoring them.'},
+ {id:'c2-courage',icon:'shield',name:'Moral courage',
+  u:'Moral courage is doing what is right even when it is difficult, unpopular or risky. It is not the absence of fear. It is acting despite the fear of criticism, losing friends, peer pressure or punishment.',
+  ex:'Reporting cheating during an exam. Standing up against bullying. Telling the truth when it is hard.',
+  r:'Courage is not feeling no fear. It is acting while scared.'},
+ {id:'c2-meta',icon:'question',name:'Is morality only feeling?',
+  u:'Ethical subjectivism says “stealing is wrong” just means “I dislike stealing.” Emotivism (the “boo-hurrah” theory) says moral statements express attitudes, not facts: “torture is bad” is like shouting “boo to torture!”',
+  ex:'If it is only feeling, two people who disagree about cruelty cannot both be right or wrong.',
+  r:'If morality were only mood, I could not criticize injustice anywhere. I think there is more to it.'}
+];
+const STEPS = [
+ {n:'Identify the problem',d:'Work out what the moral issue or conflict really is.',x:'A classmate is being bullied. Is staying quiet okay?'},
+ {n:'Gather the facts',d:'Find the important information needed to understand the situation.',x:'What was said and done? Once, or again and again?'},
+ {n:'Who is affected',d:'Think about who may be helped or harmed by my decision.',x:'The classmate, the bully, the bystanders, and me.'},
+ {n:'Possible choices',d:'List the different actions I could take.',x:'Ignore it, step in, tell a teacher, comfort the classmate afterward.'},
+ {n:'Evaluate the choices',d:'Weigh consequences, values, rights and responsibilities.',x:'What do I owe this classmate? What is safest and fairest?'},
+ {n:'Make the decision',d:'Choose the action that is most ethical and responsible.',x:'Tell a trusted teacher and stay with the classmate.'},
+ {n:'Reflect',d:'Look at the result and learn from it.',x:'Did it stop? What would I do sooner next time?'}
+];
+
+const LENSES = [
+ {id:'aristotle',icon:'plant',name:'Aristotle',tag:'Character over rules. Ask “what kind of person am I becoming?” instead of “what is the rule?”',
+  juan:'Juan’s purpose is to live well, not just get by. Returning the ₱200 is one more rep in becoming an honest person. Keeping it is a rep in the other direction.',
+  cs:[
+  {id:'c3-telos',icon:'target',name:'Telos',u:'Every being has a natural purpose. For humans it is not mere survival but flourishing: living and acting well.',ex:'A sari-sari store’s purpose is not just to open every day. It is to serve the neighborhood.',r:'Surviving and living well are not the same thing. I want the second.'},
+  {id:'c3-habit',icon:'loop',name:'Habit',u:'Virtues are not built-in traits or moods. They are built by repeated right action until good conduct is second nature. You become honest by practicing honest acts.',ex:'A tricycle driver gives exact change trip after trip until honesty is simply who he is.',r:'Character is a habit I am building right now, in small things.'},
+  {id:'c3-eudai',icon:'sun',name:'Eudaimonia',u:'Happiness means flourishing across a whole life, not a fleeting pleasure. A life organized around virtuous activity, not one good deed or one fun weekend.',ex:'One employee blows the 13th-month pay in a night and feels empty. Another uses part of it for a sibling’s tuition.',r:'A good weekend is not a good life. What will I be glad of in ten years?'}]},
+ {id:'aquinas',icon:'compass',name:'Aquinas',tag:'A moral order built into nature, made real through habitual right action.',
+  juan:'Natural law: reason alone shows that money handed over by mistake is not mine. Justice says return it, and fortitude is the courage to walk back.',
+  cs:[
+  {id:'c3-natural',icon:'compass',name:'Natural law',u:'The moral order is woven into nature and knowable by human reason alone, without a religious text, institution or written law.',ex:'Even without a barangay ordinance, everyone can reason that dumping trash in the creek is wrong because clean water matters to the community.',r:'Some wrongs I can see just by thinking clearly. No rulebook needed.'},
+  {id:'c3-cardinal',icon:'shield',name:'Cardinal virtues',u:'Prudence guides practical judgment. Justice governs fairness and what we owe others. Fortitude sustains courage under difficulty. Temperance moderates appetites and desires.',ex:'A barangay health worker keeps visiting sick neighbors despite the risk (fortitude). A vendor returns dropped money (justice).',r:'Four words to check myself: wise, fair, brave, balanced.'}]},
+ {id:'kant',icon:'safe',name:'Kant',tag:'Duty and logic, not character or consequences. The right thing counts only if done for the right reason.',
+  juan:'Good will: return it because it is right, not because someone is watching. Universal test: if everyone kept extra change, nobody could trust a store.',
+  cs:[
+  {id:'c3-will',icon:'key',name:'Good will',u:'The only thing universally good is a good will: acting from duty alone. Doing right for self-interest, reward or reputation does not count as morally good.',ex:'A store owner gives a small child the correct change. It is moral only if done because it is right, not to protect the store’s name.',r:'If I am only good for applause, it is a performance, not goodness.'},
+  {id:'c3-ci',icon:'people',name:'Categorical imperative',u:'Could the rule behind my action become a universal law that everyone follows? If it creates a contradiction or society collapses, the action is wrong.',ex:'If everyone cut in line for a jeepney, the line would cease to exist and no one could board fairly.',r:'“What if everyone did this?” is my fastest ethics check.'},
+  {id:'c3-rights',icon:'law',name:'Legal vs. moral rights',u:'Legal rights are created and enforced by governments and can be added, changed or removed. Moral rights come from a person’s inherent worth and exist even if no law protects them.',ex:'Before the Batas Kasambahay gave domestic workers a day off, they still had a moral right to rest.',r:'A law can be late. A right does not wait for permission.'}]},
+ {id:'util',icon:'bars',name:'Utilitarianism',tag:'The ethics of outcomes. It judges actions entirely by their results (Bentham and Mill).',
+  juan:'Juan gains ₱200 and the tindera likely loses ₱200. A small gain against a bigger loss on someone with less. Total well-being says return it.',
+  cs:[
+  {id:'c3-good',icon:'scale',name:'The greatest good',u:'The right action is whichever produces the greatest total good (happiness, safety, well-being) summed across everyone it affects.',ex:'After a typhoon, a barangay with limited relief packs gives them first to families with small children and the elderly.',r:'Fair does not always mean equal. Sometimes it means going where the need is.'},
+  {id:'c3-biz',icon:'bars',name:'In business',u:'Cost-benefit analysis is the standard tool of management: tally the costs, tally the benefits, pick the greatest net gain. That is why managers naturally think like utilitarians.',ex:'A mall closes early before a typhoon if protecting people outweighs the lost sales.',r:'Numbers help, but a number that ignores a person is a warning sign.'},
+  {id:'c3-trade',icon:'plusminus',name:'Trade-offs',u:'Strengths: practical, counts everyone equally, gives a measurable standard. Criticisms: happiness is hard to measure, it can justify harming a minority, and long-term results are unpredictable.',ex:'Vaccinating frontliners first saved more lives overall, but other vulnerable people had to wait longer.',r:'A rule that helps most people can still hurt someone. I should always ask who that someone is.'}]},
+ {id:'justice',icon:'pie',name:'Justice',tag:'Not “what should I do?” but “how should a society’s benefits and burdens be divided?”',
+  juan:'Justice asks what we owe. The ₱200 belongs to the tindera, and the same amount weighs more on a small store than on me.',
+  cs:[
+  {id:'c3-egal',icon:'pie',name:'Egalitarian',u:'Resources should be distributed equally among everyone, regardless of contribution, need or circumstance. Fairness equals identical distribution.',ex:'Every household in a barangay gets the exact same relief pack, rich or poor.',r:'Simple and clear, but identical is not always fair when needs differ.'},
+  {id:'c3-capital',icon:'coins',name:'Capitalist',u:'Rewards should track individual contribution, effort, output and risk. Fairness means earning in proportion to what you produce.',ex:'A tricycle driver who works longer hours and carries more passengers earns more.',r:'Rewarding effort feels fair, until effort is not the only difference between people.'},
+  {id:'c3-struct',icon:'ladder',name:'Structural',u:'Fair distribution must account for social structures and systemic disadvantage. Two people rarely start the race from the same place.',ex:'A university scholarship gives bonus points to applicants from poorer provinces.',r:'The race is not the same length for everyone. I need to remember where people started.'}]}
+];
+
+const C4 = [
+ {id:'c4-ethics',icon:'book',name:'What ethics is',u:'Ethics is the study and practice of principles used to judge whether actions are right, wrong, fair, responsible or harmful. It is broader than following laws.',ex:'Using a legal loophole that still cheats a classmate.',r:'“Not illegal” is not the same as “okay.”'},
+ {id:'c4-three',icon:'law',name:'Ethics, morality, law',u:'Ethics is the principles for evaluating behavior. Morality is my beliefs about right and wrong, shaped by family, culture and experience. Law is formal rules enforced by institutions.',ex:'The law says I may; my conscience asks if it is fair, responsible, or could harm someone.',r:'Law gives me the minimum. My conscience asks for the rest.'},
+ {id:'c4-why',icon:'people',name:'Why ethics matters',u:'It shows respect for other people’s rights and dignity, builds healthier friendships, families and teams, helps me look past immediate rewards, and makes communities safer and more cooperative.',ex:'A group where everyone is honest needs far less checking.',r:'Ethics is how trust gets built, one choice at a time.'},
+ {id:'c4-values',icon:'key',name:'Core values',u:'Honesty (telling the truth), integrity (actions match principles even unseen), respect, fairness (no unjust favoritism), responsibility (owning consequences), compassion (considering how decisions affect others).',ex:'Admitting I forgot my part of the project instead of inventing an excuse.',r:'Integrity is the one that gets tested when no one is watching.'},
+ {id:'c4-success',icon:'mountain',name:'During success',u:'Success brings new temptations, like taking too much credit or forgetting who helped. Power and popularity do not remove the duty to be fair. Ethical success means sharing credit, keeping promises and staying humble.',ex:'I get the highest grade in a group project, so I acknowledge the classmates who contributed.',r:'Success should make my character stronger, not louder.'},
+ {id:'c4-hardship',icon:'cloud',name:'During hardship',u:'Stress, fear, failure, money trouble and peer pressure make wrong choices look easier. Difficulty explains why a choice is tempting, but it does not make it right.',ex:'I am struggling in a subject and think about cheating. The ethical move is to seek legitimate help.',r:'Pressure explains the temptation. It does not excuse it.'},
+ {id:'c4-dilemmas',icon:'question',name:'Student dilemmas',u:'Cheating or copying; using AI or online sources against the rules or without credit; taking credit for group work; sharing private messages or photos; bullying or staying silent while someone is harmed; lying to avoid consequences.',ex:'Seeing a private chat screenshot going around and being tempted to forward it.',r:'Staying silent while someone is harmed is also a choice.'},
+ {id:'c4-gain',icon:'hourglass',name:'Short-term gain',u:'Unethical choices can give quick benefits like grades, money, popularity or no punishment. The long-term costs are guilt, damaged trust, discipline, conflict and a poor reputation. Useful test: would I still choose this if my decision became public?',ex:'Copying an answer for a better grade now, and being known as a copier later.',r:'The public test is quick and it works.'},
+ {id:'c4-integrity',icon:'shield',name:'Integrity',u:'Integrity means acting consistently with my values, even with no audience, reward or consequence. It connects what I believe, what I say and what I do, and it is built through repeated choices, not one perfect decision.',ex:'Admitting a mistake, returning something that is not mine, keeping a promise.',r:'I do not need to be perfect. I need to be consistent.'},
+ {id:'c4-digital',icon:'phone',name:'Ethics online',u:'Online behavior is also ethical behavior. Respect privacy, give credit for ideas, images and writing, think before posting, use AI responsibly (follow school policy, verify, be honest), and remember that anonymity does not remove responsibility.',ex:'Citing a source and saying when AI helped me.',r:'Anonymous is not the same as innocent.'},
+ {id:'c4-lead',icon:'crown',name:'Ethics in leadership',u:'Ethical leaders decide by principle, not just personal advantage. They listen, accept accountability, communicate honestly and avoid favoritism. Leadership is tested when a decision is unpopular but necessary, and a leader’s behavior shapes the group’s culture.',ex:'A leader who expects honesty must be honest first.',r:'If I want honesty from my group, I go first.'}
+];
+const TT = {
+ thick:{icon:'sun',name:'Thick',what:'The good times: when things are going well.',items:['success','comfort','recognition','popularity','money','opportunity'],temp:'taking too much credit, ignoring the people who helped me, thinking rules are for others.'},
+ thin:{icon:'cloud',name:'Thin',what:'The hard times: when doing right costs something.',items:['failure','stress','temptation','pressure','disappointment','conflict','uncertainty'],temp:'cheating, lying, taking the shortcut because I am struggling.'}
+};
+const OPTS = [
+ {k:'A',t:'Keep it because I found it.',best:false,f:'Finding is not owning. Someone is probably panicking right now.'},
+ {k:'B',t:'Leave it and walk away.',best:false,f:'My hands stay clean, but the next person may simply take it. The owner still loses.'},
+ {k:'C',t:'Turn it over to a teacher, the office, or a responsible authority.',best:true,f:'Honest, responsible, and it respects ownership. The owner has a real way to get it back.'},
+ {k:'D',t:'Ask nearby students or staff if someone lost money.',best:false,f:'Good instinct, but anyone could claim it. Better combined with C so someone can verify the owner.'}
+];
+
+const CH = [
+ {id:'c1',tab:'Moral agent',tabIcon:'person',title:'The moral agent',icon:'person',cap:'who acts?',hand:'My choices are mine, so I answer for them.',src:'From Group 1: who counts as a moral agent',entries:C1},
+ {id:'c2',tab:'Deciding',tabIcon:'heart',title:'Feeling, thinking, acting',icon:'heart',cap:'heart + head',hand:'Feel first. Think next. Then have the courage to act.',src:'From the lesson on the act and moral decision-making',entries:C2},
+ {id:'c3',tab:'Toolkit',tabIcon:'compass',title:'The everyday ethics toolkit',icon:'scale',cap:'try a lens',hand:'Five lenses for one question: what should I do?',src:'From Foundations of Moral Philosophy',entries:LENSES.flatMap(l=>l.cs)},
+ {id:'c4',tab:'Thick & thin',tabIcon:'sun',title:'Ethics through thick and thin',icon:'sun',cap:'same me',hand:'The same me when it is easy and when it is hard.',src:'From Group 4: ethics through thick and thin',entries:C4},
+ {id:'c5',tab:'Closing',tabIcon:'pencil',title:'What I’m taking with me',icon:'pencil',cap:'last page',hand:'Ethics is a way of living, not a one-time decision.',src:'My closing page',entries:[]}
+];
+CH.forEach(c=>c.ids=c.entries.map(e=>e.id));
+const TOTAL = CH.reduce((a,c)=>a+c.ids.length,0);
+
+/* ---------- state ---------- */
+const S = {ch:'c1',active:{},lens:null,concept:null,step:0,tt:'thick',pick:null,agent:null};
+const cnt = c => c.ids.filter(i=>read.has(i)).length;
+function markRead(id){
+  if(!read.has(id)){ read.add(id); store.set('ej_read',JSON.stringify([...read])); }
+  updateProgress();
+}
+function updateProgress(){
+  const n = CH.reduce((a,c)=>a+cnt(c),0);
+  $('#barfill').style.width = (n/TOTAL*100)+'%';
+  const sc = $('#tabs').scrollLeft;
+  renderTabs(); $('#tabs').scrollLeft = sc;
+}
+function renderTabs(){
+  $('#tabs').innerHTML = CH.map(c=>`<button class="tab" role="tab" data-tab="${c.id}" aria-current="${S.ch===c.id}">${ico(c.tabIcon,20)}<span>${c.tab}</span>${c.ids.length?`<span class="cnt">${cnt(c)}/${c.ids.length}</span>`:''}</button>`).join('');
+}
+
+/* ---------- shared pieces ---------- */
+const head = c => `<section class="chhead"><div class="polaroid"><div class="pic">${ico(c.icon,64)}</div><span class="hand">${c.cap}</span></div><div class="chtxt"><h1>${c.title}</h1><p class="hand lead">${c.hand}</p><p class="src">${c.src}</p></div></section>`;
+const stickers = (list,activeId,attr) => `<div class="grid">${list.map(e=>`<button class="stk${read.has(e.id)?' read':''}${activeId===e.id?' on':''}" ${attr}="${e.id}" aria-pressed="${activeId===e.id}"><span class="tile">${ico(e.icon,34)}<i class="chk">${ico('check',12)}</i></span><span class="lbl">${e.name}</span></button>`).join('')}</div>`;
+function entryHTML(e){
+  const saved = store.get('ej_r_'+e.id);
+  return `<article class="sheet entry" id="entry-live"><h3>${e.name}</h3><p>${e.u}</p><p class="ex"><b>Example.</b> ${e.ex}</p><div class="mine"><button class="pen" data-edit aria-label="Edit my reflection">${ico('pencil',16)}</button><p class="hand refl" contenteditable="true" spellcheck="false" data-key="ej_r_${e.id}" aria-label="My reflection">${esc(saved!==null?saved:e.r)}</p></div><p class="editnote">My reflection. Tap to rewrite it in your own words.</p></article>`;
+}
+const hint = '<div class="sheet"><p class="hand hint" style="margin:0">Tap an icon to open a page.</p></div>';
+function scrollToEntry(){
+  const el = $('#entry-live'); if(!el) return;
+  if(el.getBoundingClientRect().top > innerHeight*0.62) el.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion:reduce)').matches?'auto':'smooth',block:'start'});
+}
+function entriesBlock(c,title,sub){
+  return `<h2>${title}</h2><p class="sub">${sub}</p><div id="g-${c.id}">${stickers(c.entries,S.active[c.id],'data-open')}</div><div id="e-${c.id}">${hint}</div>`;
+}
+function openEntry(cid,id){
+  const c = CH.find(x=>x.id===cid), e = c.entries.find(x=>x.id===id);
+  S.active[cid]=id; markRead(id);
+  $('#g-'+cid).innerHTML = stickers(c.entries,id,'data-open');
+  $('#e-'+cid).innerHTML = entryHTML(e);
+  scrollToEntry();
+}
+
+/* ---------- chapter renderers ---------- */
+function agentVerdict(){
+  const a = AGENTS.find(x=>x.id===S.agent);
+  if(!a) return '<div class="sheet"><p class="hand hint" style="margin:0">Tap a character to see the verdict.</p></div>';
+  return `<div class="sheet entry"><span class="badge ${a.cls}">${a.v}</span><p>${a.t}</p><p class="hand" style="font-size:1.5rem;margin:10px 0 0">I used to say “the AI did it.” Under this view, someone still has to answer for it.</p></div>`;
+}
+function mixInfo(v){
+  if(v<30) return {t:'Mostly heart. I react fast and care deeply, but I may favor people like me and get swept up by outrage.',r:'Good alarm, bad judge.'};
+  if(v>70) return {t:'Mostly head. I am consistent and fair, but I can forget why the problem matters and sound cold.',r:'Fair, but is anyone feeling it?'};
+  return {t:'Balanced. Feeling spots that a situation matters. Reason checks that my response is fair and justifiable. This is where mature judgment lives.',r:'Heart to notice, head to check, will to act.'};
+}
+function stepBody(){
+  const s = STEPS[S.step];
+  return `<div class="steps">${STEPS.map((x,i)=>`<button class="sn${i===S.step?' on':i<S.step?' done':''}" data-step="${i}" aria-label="Step ${i+1}: ${x.n}">${i+1}</button>`).join('')}</div>
+  <div class="sheet entry"><h3>${S.step+1}. ${s.n}</h3><p>${s.d}</p><p class="ex"><b>In a bullying scene.</b> ${s.x}</p>
+  <div class="stepnav"><button class="btn" data-stepgo="-1" ${S.step===0?'disabled':''}>Back</button><button class="btn" data-stepgo="1" ${S.step===6?'disabled':''}>Next step</button></div></div>`;
+}
+function ttBody(){
+  const t = TT[S.tt];
+  return `<div class="tt ${S.tt} entry"><div class="big">${ico(t.icon,64)}</div><h3>${t.name}</h3><p>${t.what}</p><div class="chips">${t.items.map(i=>`<span>${i}</span>`).join('')}</div><p><b>The temptation here:</b> ${t.temp}</p>
+  <div class="steady"><span>My principles</span><i></i><small>honesty · fairness · responsibility · respect (they do not change with the weather)</small></div></div>`;
+}
+function scnBody(){
+  return OPTS.map(o=>`<button class="opt${S.pick===o.k?' chosen':''}" data-opt="${o.k}"><b>${o.k}.</b><span>${o.t}</span></button>${S.pick===o.k?`<div class="fb entry"><p><b>${o.best?'My pick.':'Not quite.'}</b> ${o.f}</p>${o.best?'<p class="hand" style="font-size:1.5rem;margin:6px 0 0">Handing it to the office means I am not both the finder and the judge.</p>':''}</div>`:''}`).join('');
+}
+function lensBody(){
+  const l = LENSES.find(x=>x.id===S.lens);
+  if(!l) return '<div class="sheet"><p class="hand hint" style="margin:0">Tap a lens to try it on Juan.</p></div>';
+  const c = l.cs.find(x=>x.id===S.concept) || l.cs[0];
+  return `<div class="sheet entry"><h3>${l.name}</h3><p class="ex" style="margin-bottom:0">${l.tag}</p>
+  <div class="chips" role="group" aria-label="${l.name} ideas">${l.cs.map(x=>`<button class="chip" data-concept="${x.id}" aria-pressed="${x.id===c.id}">${ico(x.icon,22)}${x.name}</button>`).join('')}</div>
+  <div id="c3-concept">${conceptHTML(c)}</div>
+  <div class="verdict"><p><b>Juan, through this lens.</b> ${l.juan}</p></div></div>`;
+}
+function conceptHTML(e){
+  const saved = store.get('ej_r_'+e.id);
+  return `<p>${e.u}</p><p class="ex"><b>Example.</b> ${e.ex}</p><div class="mine"><button class="pen" data-edit aria-label="Edit my reflection">${ico('pencil',16)}</button><p class="hand refl" contenteditable="true" spellcheck="false" data-key="ej_r_${e.id}" aria-label="My reflection">${esc(saved!==null?saved:e.r)}</p></div>`;
+}
+function lensDone(){
+  const n = LENSES.filter(l=>read.has('lens:'+l.id)).length;
+  if(n<5) return `<p class="sub" style="margin-top:14px">Lenses tried: ${n} of 5. Try them all to finish this page.</p>`;
+  return `<div class="sheet entry" style="margin-top:18px"><p class="hand" style="font-size:1.7rem;margin:0">Five lenses, one answer: give the ₱200 back. When every lens agrees, I have no excuse.</p></div>`;
+}
+
+const RENDER = {
+ c1(){ const c=CH[0]; return head(c)
+  + entriesBlock(c,'Ideas I learned','Tap an icon to open a page.')
+  + `<h2>Try it: who counts as a moral agent?</h2><p class="sub">Tap each one.</p><div id="agentg">${agentGrid()}</div><div id="agentv">${agentVerdict()}</div>`; },
+ c2(){ const c=CH[1]; const m=mixInfo(50); return head(c)
+  + entriesBlock(c,'Ideas I learned','Tap an icon to open a page.')
+  + `<h2>Heart or head?</h2><p class="sub">Slide to see what leaning too far either way does.</p>
+     <div class="sheet"><div class="mixrow">${ico('heart',34)}<input type="range" id="mix" min="0" max="100" value="50" aria-label="From heart to head"><span style="display:contents">${ico('bulb',34)}</span></div>
+     <p id="mixt" style="margin:0 0 6px">${m.t}</p><p class="hand" id="mixr" style="font-size:1.5rem;margin:0">${m.r}</p></div>`
+  + `<h2>The 7-step moral reasoning model</h2><p class="sub">Tap a step. I use a bullying scene as my example.</p><div id="stepb">${stepBody()}</div>
+     <div class="sheet" style="margin-top:14px"><p class="hand" style="font-size:1.5rem;margin:0">Seven steps feel slow, but pausing is what turns a reaction into a decision.</p></div>`; },
+ c3(){ const c=CH[2]; return head(c)
+  + `<div class="juan">${ico('coins',54)}<p><b>Juan’s ₱200.</b> Juan buys snacks. The tindera accidentally hands him ₱200 too much in change. No one saw, and he is already walking home. What should he do, and why?</p></div>
+     <h2>Pick a lens</h2><p class="sub">Each lens gives a different way to reason about Juan.</p><div id="lensg">${lensGrid()}</div><div id="lensb">${lensBody()}</div><div id="lensd">${lensDone()}</div>`; },
+ c4(){ const c=CH[3]; return head(c)
+  + `<h2>Thick or thin?</h2><p class="sub">“Through thick and thin” means keeping my principles in good and hard circumstances.</p>
+     <div class="seg" role="group" aria-label="Thick or thin"><button data-tt="thick" aria-pressed="${S.tt==='thick'}">${ico('sun',22)}Thick</button><button data-tt="thin" aria-pressed="${S.tt==='thin'}">${ico('cloud',22)}Thin</button></div>
+     <div id="ttb">${ttBody()}</div>
+     <div class="sheet" style="margin-top:14px"><p class="hand" style="font-size:1.5rem;margin:0">Who am I when doing the right thing becomes difficult?</p></div>`
+  + entriesBlock(c,'Ideas I learned','Tap an icon to open a page.')
+  + `<h2>Scenario: the lost ₱5,000</h2><p class="sub">You find ₱5,000 in an empty classroom and cannot tell whose it is. Which choice shows honesty, responsibility and respect for ownership?</p><div id="scn">${scnBody()}</div>`; },
+ c5(){ const saved = store.get('ej_week')||''; return head(CH[4])
+  + `<h2>My four takeaways</h2><div class="sheet"><ul class="take">
+     <li>${ico('person',30)}<span class="hand">I am a moral agent. My choices are mine.</span></li>
+     <li>${ico('heart',30)}<span class="hand">Feelings notice, reason checks, courage acts.</span></li>
+     <li>${ico('compass',30)}<span class="hand">Every lens asks: what kind of person am I becoming?</span></li>
+     <li>${ico('sun',30)}<span class="hand">Same me in thick and in thin.</span></li></ul></div>
+     <h2>One small thing I’ll practice this week</h2><p class="sub">Small honest choices become habits.</p>
+     <textarea id="week" aria-label="One small thing I will practice this week" placeholder="Write it here…">${esc(saved)}</textarea>
+     <p class="hand final">Success with integrity is what makes it meaningful and lasting.</p>`; }
+};
+function agentGrid(){ return stickers(AGENTS,S.agent,'data-agent'); }
+function lensGrid(){ return `<div class="grid">${LENSES.map(l=>`<button class="stk${read.has('lens:'+l.id)?' read':''}${S.lens===l.id?' on':''}" data-lens="${l.id}" aria-pressed="${S.lens===l.id}"><span class="tile">${ico(l.icon,34)}<i class="chk">${ico('check',12)}</i></span><span class="lbl">${l.name}</span></button>`).join('')}</div>`; }
+
+function show(id,keepScroll){
+  S.ch = id;
+  $('#page').innerHTML = RENDER[id]();
+  renderTabs();
+  const t = document.querySelector('.tab[aria-current="true"]'); if(t) t.scrollIntoView({inline:'center',block:'nearest'});
+  if(!keepScroll) scrollTo({top:0});
+}
+
+/* ---------- events ---------- */
+const page = $('#page');
+page.addEventListener('click',ev=>{
+  const q = s => ev.target.closest(s);
+  let b;
+  if(b=q('[data-open]')) return openEntry(S.ch,b.dataset.open);
+  if(b=q('[data-agent]')){ S.agent=b.dataset.agent; $('#agentg').innerHTML=agentGrid(); $('#agentv').innerHTML=agentVerdict(); return; }
+  if(b=q('[data-step]')){ S.step=+b.dataset.step; $('#stepb').innerHTML=stepBody(); return; }
+  if(b=q('[data-stepgo]')){ S.step=Math.max(0,Math.min(6,S.step+(+b.dataset.stepgo))); $('#stepb').innerHTML=stepBody(); return; }
+  if(b=q('[data-lens]')){
+    S.lens=b.dataset.lens; const l=LENSES.find(x=>x.id===S.lens); S.concept=l.cs[0].id;
+    markRead('lens:'+S.lens); markRead(S.concept);
+    $('#lensg').innerHTML=lensGrid(); $('#lensb').innerHTML=lensBody(); $('#lensd').innerHTML=lensDone(); return;
+  }
+  if(b=q('[data-concept]')){
+    S.concept=b.dataset.concept; markRead(S.concept);
+    const l=LENSES.find(x=>x.id===S.lens), c=l.cs.find(x=>x.id===S.concept);
+    document.querySelectorAll('[data-concept]').forEach(x=>x.setAttribute('aria-pressed',x.dataset.concept===S.concept));
+    $('#c3-concept').innerHTML=conceptHTML(c); return;
+  }
+  if(b=q('[data-tt]')){ S.tt=b.dataset.tt; document.querySelectorAll('[data-tt]').forEach(x=>x.setAttribute('aria-pressed',x.dataset.tt===S.tt)); $('#ttb').innerHTML=ttBody(); return; }
+  if(b=q('[data-opt]')){ S.pick=b.dataset.opt; $('#scn').innerHTML=scnBody(); return; }
+  if(q('[data-edit]')){ const r=q('.mine').querySelector('.refl'); r.focus(); const s=getSelection(),g=document.createRange(); g.selectNodeContents(r); g.collapse(false); s.removeAllRanges(); s.addRange(g); }
+});
+page.addEventListener('input',ev=>{
+  if(ev.target.id==='mix'){ const m=mixInfo(+ev.target.value); $('#mixt').textContent=m.t; $('#mixr').textContent=m.r; }
+  if(ev.target.id==='week') store.set('ej_week',ev.target.value);
+});
+page.addEventListener('focusout',ev=>{
+  const r = ev.target.closest && ev.target.closest('.refl');
+  if(r){ const t=r.textContent.trim(); store.set(r.dataset.key,t); }
+});
+$('#tabs').addEventListener('click',ev=>{ const b=ev.target.closest('[data-tab]'); if(b) show(b.dataset.tab); });
+
+/* cover */
+$('#cgo').innerHTML = CH.slice(0,4).map(c=>`<button data-go="${c.id}" aria-label="Go to ${c.title}">${ico(c.tabIcon,32)}</button>`).join('');
+function openJournal(id){
+  show(id||'c1'); $('#cover').classList.add('gone');
+  setTimeout(()=>{ $('#cover').style.visibility='hidden'; },900);
+}
+$('#openBtn').addEventListener('click',()=>openJournal('c1'));
+$('#cgo').addEventListener('click',ev=>{ const b=ev.target.closest('[data-go]'); if(b) openJournal(b.dataset.go); });
+$('#reset').addEventListener('click',()=>{
+  if(!confirm('Reset all your edits and progress on this device?')) return;
+  store.clear(); read=new Set(); Object.assign(S,{active:{},lens:null,concept:null,step:0,tt:'thick',pick:null,agent:null});
+  show(S.ch); updateProgress();
+});
+
+show('c1',true); updateProgress();
+</script>
+</body>
+</html>
